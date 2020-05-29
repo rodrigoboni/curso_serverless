@@ -11,4 +11,4 @@
 
 ## Modulo 4 - Minha primeira aplicação na AWS sem frameworks
 * pasta lambda-sem-framework
-* ver arquivo run.sh para detalhes
+* ver arquivo run.sh para etapas
