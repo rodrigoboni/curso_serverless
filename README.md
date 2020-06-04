@@ -1,11 +1,21 @@
-# Resumos e código do curso Ew.it Aplicações Serverless na AWS
+# Resumos e código do curso ew.it Aplicações Serverless na AWS
 
 (obs arquivos run.sh dentro das pastas, contém detalhes específicos de cada aula)
 
 ## Modulo Introdução à apps Serverless
 
-### aws cli
+### Criação de conta
+* Criar conta na aws
+* Criar usuário com permissões admin (IAM)
+* Salvar arquivo csv com credenciais - NÃO EXPOR ESTE ARQUIVO EM REPOSITÓRIO REMOTO!
+
+### aws cli e credenciais
 * Instalação https://aws.amazon.com/pt/cli/
+* Configurar perfil / credenciais:
+    * aws configure
+        * preencher com dados do arquivo csv de secrets
+        * selecionar regiao us-east-1
+        * output json
 
 ### Primeira aplicação na AWS via interface
 * Manipular bucket S3:
