@@ -1,5 +1,5 @@
 # passos para criar lambda:
-# criar arquivo de politicas se segurança p/ definir o que a lambda pode acessar (politicas.json)
+# criar arquivo de politicas se segurança p/ definir o que a lambda pode acessar (policy.json)
 
 # criar role na aws (IAM)
 aws iam create-role \
