@@ -2,8 +2,6 @@
 
 ## SEMPRE REMOVER RECURSOS ALOCADOS APÓS CONCLUIR ESTUDOS (P/ NÃO GERAR CUSTOS)
 
-* executar comando `sls remove` na pasta do projeto em que se esta atuando
-
 ## Modulo Introdução à apps Serverless
 
 ### Criação de conta
@@ -106,3 +104,7 @@ sls remove
 ### Links úteis
 
 * <https://www.serverless.com/framework/docs/providers/aws/cli-reference/>
+
+### VSCode extensions
+* Serverless Console - visualizar logs das funções, visualizar recursos da aws, como tabelas dynamo etc
+* Serverless IDE - code snippets relacionados ao serverless fw
