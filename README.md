@@ -70,6 +70,16 @@
 ### Validações inteligentes com Joi e DynamoDB stream events
 
 * pasta demo-trigger-dynamodb
+* obs patterns aplicados
+* obs trigger de fn a partir do dynamodb
+
+### Trabalhando com multi-environments e schedulers
+
+* pasta demo-env-scheduler
+* obs tratamento de variáveis de ambiente, validação de var env requeridas p/ start da app
+* obs execução de fn por agendamento no cloud watch
+* usar npm tasks p/ deploy, remove, invoke etc
+* após fazer deploy obs logs no console aws lambda
 
 ### Comandos úteis / comuns
 
