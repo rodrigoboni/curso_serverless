@@ -13,13 +13,13 @@ class Handler {
       Image: {
         Bytes: buffer
       }
-    }).promise () // aws permite utilizar promises / elimina uso de callbacks
+    }).promise() // aws permite utilizar promises / elimina uso de callbacks
 
-    const workingItems = result.Labels.filter(({Confidence}) => Confidence > 80)
+    const workingItems = result.Labels.filter(({ Confidence }) => Confidence > 80)
 
-    const names = workingItems.map(({Name}) => Name).join(' and ')
+    const names = workingItems.map(({ Name }) => Name).join(' and ')
 
-    return {names, workingItems}
+    return { names, workingItems }
   }
 
   async translateText(text) {
@@ -36,7 +36,7 @@ class Handler {
 
   formatTextResults(texts, workingItems) {
     const finalText = []
-    for(const indexText in texts) {
+    for (const indexText in texts) {
       const nameInPortuguese = texts[indexText]
       const confidence = workingItems[indexText].Confidence;
       finalText.push(
@@ -44,7 +44,7 @@ class Handler {
 
       )
     }
-    
+
     return finalText.join('\n')
   }
 
@@ -60,14 +60,14 @@ class Handler {
   async main(event) {
     try {
       const { imageUrl } = event.queryStringParameters
-      
+
       console.log('downloading image...')
       // const imgBuffer = await readFile('./images/img1.jpg')
       const imgBuffer = await this.getImageBuffer(imageUrl)
 
       console.log('Detecting labels...')
-      const {names, workingItems} = await this.detectImageLabels(imgBuffer)
-      
+      const { names, workingItems } = await this.detectImageLabels(imgBuffer)
+
       console.log('Translating...')
       const texts = await this.translateText(names)
 
@@ -94,7 +94,7 @@ class Handler {
 //para gerenciar as dependências passadas para a instância da class Handler
 //recomendado definir a factory em arquivo separado (mantido aqui p/ fins didáticos)
 const aws = require('aws-sdk')
-const reko = new aws.Rekognition() 
+const reko = new aws.Rekognition()
 const translator = new aws.Translate()
 const handler = new Handler({
   rekoSvc: reko,

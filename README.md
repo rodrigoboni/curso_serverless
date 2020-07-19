@@ -116,5 +116,6 @@ sls remove
 * <https://www.serverless.com/framework/docs/providers/aws/cli-reference/>
 
 ### VSCode extensions
+
 * Serverless Console - visualizar logs das funções, visualizar recursos da aws, como tabelas dynamo etc
 * Serverless IDE - code snippets relacionados ao serverless fw
