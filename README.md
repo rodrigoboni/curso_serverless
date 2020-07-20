@@ -26,11 +26,9 @@
   * upload: aws s3 cp (arquivo local) s3://(bucket)/pasta...
   * download: aws s3 cp s3://(bucket)/arquivo ./
 
-### Primeira aplicação na AWS sem frameworks
+### 01demo-lambda-sem-framework - Primeira aplicação na AWS sem frameworks
 
-* pasta lambda-sem-framework (obs run.sh)
-
-### Possíveis limitações ao utilizar aws lambda:
+### Possíveis limitações ao utilizar aws lambda
 
 * Runtime environment diferente da máquina local
   * Consultar documentação aws - <https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html>
@@ -44,17 +42,15 @@
   * considera também o tempo de execução de cada chamada - se for acima de 10s pode ser inviável - as lambdas devem ser focadas em tarefas pequenas
   * <https://aws.amazon.com/pt/lambda/pricing/>
 
-### Introdução ao Serverless framework
+### 02demo-sls - Introdução ao Serverless framework
 
 * <https://www.serverless.com/>
 * framework criado para ser agnóstico quanto ao provedor (aws, google cloud etc)
 * na prática funciona melhor na aws
 * min node v10
-* pasta demo-sls (obs run.sh)
 
-### Criando uma API para analisar imagens com AWS Rekognition
+### 03demo-image-analysis - Criando uma API para analisar imagens com AWS Rekognition
 
-* pasta demo-image-analysis
 * detalhes implementação comentado no código
 * pontos importantes
   * inicializar npm
@@ -67,19 +63,27 @@
         * sls invoke -f img-analysis --path request.json --log
         * chamar a url gerada passando os parametros no browser para testar também
 
-### Validações inteligentes com Joi e DynamoDB stream events
+### 04demo-trigger-dynamodb - Validações inteligentes com Joi e DynamoDB stream events
 
-* pasta demo-trigger-dynamodb
 * obs patterns aplicados
 * obs trigger de fn a partir do dynamodb
 
-### Trabalhando com multi-environments e schedulers
+### 05demo-env-scheduler - Trabalhando com multi-environments e schedulers
 
-* pasta demo-env-scheduler
 * obs tratamento de variáveis de ambiente, validação de var env requeridas p/ start da app
 * obs execução de fn por agendamento no cloud watch
 * usar npm tasks p/ deploy, remove, invoke etc
 * após fazer deploy obs logs no console aws lambda
+
+### 06demo-layers - Lambda layers
+
+* O recurso de camadas da AWS Lambda permite incluir arquivos ou dados adicionais nas funções, geralmente aplicado p/ utilizar binários de bibliotecas
+* As camadas são adicionadas ao arquivo ZIP utilizado para upload do código ao ambiente da AWS
+* P/ efeito de comparação a AWS Lambda Layer é como uma EC2 AMI, porém voltado a funções
+* Um recurso muito interessante é que uma camada pode ser compartilhada / utilizada por várias funções
+* No exemplo da pasta um binário é criado e depois utilizado em uma função lambda
+* P/ executar a função local e ter o layer injetado é necessário add o param --docker, p/ o fw simular o ambiente runtime
+* Cuidado ao fazer deploy, se os layers utilizados estiverem no mesmo projeto o fw entenderá que é uma nova versão da layer, e portanto ocorrerá incremento de versão, dificultando controle de versionamento (manter as layers em projetos separados)
 
 ### Comandos úteis / comuns
 
@@ -92,6 +96,9 @@ sls invoke -f <nome da funcao> --logger
 
 # invocar funcao local
 sls invoke local -f <nome da funcao> --logger
+
+# invocar funcao local simulando ambiente runtime (p/ uso de layers)
+sls invoke local --docker -f <nome da funcao>
 
 # ver logs
 sls logs -f <nome da funcao> --tail
