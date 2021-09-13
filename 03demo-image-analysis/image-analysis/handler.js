@@ -90,9 +90,9 @@ class Handler {
   }
 }
 
-//factory
-//para gerenciar as dependências passadas para a instância da class Handler
-//recomendado definir a factory em arquivo separado (mantido aqui p/ fins didáticos)
+// factory
+// para gerenciar as dependências passadas para a instância da class Handler
+// recomendado definir a factory em arquivo separado (mantido aqui p/ fins didáticos)
 const aws = require('aws-sdk')
 const reko = new aws.Rekognition()
 const translator = new aws.Translate()
@@ -101,6 +101,6 @@ const handler = new Handler({
   translatorSvc: translator
 })
 
-//define a função a ser exportada
-//utiliza o bind para garantir o contexto (this)
+// define a função a ser exportada
+// utiliza o bind para garantir o contexto (this)
 module.exports.main = handler.main.bind(handler)
